@@ -34,13 +34,11 @@ module.exports = generators.Base.extend({
 		this.fs.copy(sourceRoot + '/httpdocs/sass/style.scss', appDir + '/sass/style.scss');
 
 		// Grunt related files
-		this.fs.copy(sourceRoot + '/_Grunt_Mac.command', destRoot + '/_Grunt_Mac.command');
-		this.fs.copy(sourceRoot + '/_Grunt_serve_Mac.command', destRoot + '/_Grunt_serve_Mac.command');
-		this.fs.copy(sourceRoot + '/_Grunt_watch_Mac.command', destRoot + '/_Grunt_watch_Mac.command');
-		this.fs.copy(sourceRoot + '/_Grunt_serve_Windows.cmd', destRoot + '/_Grunt_serve_Windows.cmd');
-		this.fs.copy(sourceRoot + '/_Grunt_watch_Windows.cmd', destRoot + '/_Grunt_watch_Windows.cmd');
-		this.fs.copy(sourceRoot + '/_Grunt_Windows.cmd', destRoot + '/_Grunt_Windows.cmd');
-		this.fs.copy(sourceRoot + '/Gruntfile.js', destRoot + '/Gruntfile.js');
+		this.fs.copy(sourceRoot + '/_Gulp_Mac.command', destRoot + '/_Gulp_Mac.command');
+		this.fs.copy(sourceRoot + '/_Gulp_serve_Mac.command', destRoot + '/_Gulp_serve_Mac.command');
+		this.fs.copy(sourceRoot + '/_Gulp_serve_Windows.cmd', destRoot + '/_Gulp_serve_Windows.cmd');
+		this.fs.copy(sourceRoot + '/_Gulp_Windows.cmd', destRoot + '/_Gulp_Windows.cmd');	
+		this.fs.copy(sourceRoot + '/Gulpfile.js', destRoot + '/Gulpfile.js');
 
 		// License
 		this.fs.copy(sourceRoot + '/LICENSE', destRoot + '/LICENSE');
@@ -91,7 +89,7 @@ module.exports = generators.Base.extend({
 		callback();
 	},
 	initializing: function() {
-		var message = chalk.yellow.bold('Welcome to Dutwebworks Grunt ') + chalk.yellow('A starter kit for a web site with Grunt');
+		var message = chalk.yellow.bold('Welcome to Dutwebworks Gulp ') + chalk.yellow('A starter kit for a web site with Gulp');
 		this.log(yosay(message, { maxLength: 17 }));
 	},
 	promting: function() {
