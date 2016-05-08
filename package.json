@@ -1,0 +1,24 @@
+{
+  "name": "generator-dwwgulp",
+  "version": "0.1.0",
+  "description": "A Yeoman generator for creating a basic web site with Gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Gulp",
+    "HTML",
+    "JavaScript",
+    "Css",
+    "Sass"
+  ],
+  "author": "Dennis Burger",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "mkdirp": "^0.5.1",
+    "yeoman-generator": "^0.21.1",
+    "yosay": "^1.1.0"
+  }
+}
