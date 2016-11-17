@@ -1,20 +1,33 @@
 {
   "name": "generator-dwwgulp",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A Yeoman generator for creating a basic web site with Gulp",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dutchwebworks/generator-dwwgulp.git"
   },
+  "bugs": {
+    "url": "https://github.com/dutchwebworks/generator-dwwgulp/issues"
+  }, 
+  "homepage": "https://github.com/dutchwebworks/generator-dwwgulp",
+  "files": [
+    "app"
+  ],
   "keywords": [
-    "Gulp",
-    "HTML",
-    "JavaScript",
-    "Css",
-    "Sass"
+    "yeoman-generator",
+    "gulp",
+    "nodejs",
+    "html",
+    "javascript",
+    "css",
+    "sass"
   ],
   "author": "Dennis Burger",
   "license": "MIT",
+  "peerDependencies": {
+      "yo": ">=1.7.1"
+  },
   "dependencies": {
     "chalk": "^1.1.1",
     "mkdirp": "^0.5.1",
