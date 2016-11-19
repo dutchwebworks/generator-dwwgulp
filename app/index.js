@@ -75,6 +75,7 @@ module.exports = generators.Base.extend({
 				{
 					name: 'version',
 					message: 'What is the version of your app?',
+					default: '1.0.0'
 				}
 			];
 
