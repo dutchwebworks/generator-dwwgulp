@@ -29,6 +29,7 @@ function formatDate() {
 
 // Meta-data and other vars
 var pkg = require('./package.json'),
+	projectRoot = './httpdocs',
 	meta = {
 		banner: ['/*!',
 	  		' * Name: <%= pkg.name %>',
@@ -48,8 +49,8 @@ var pkg = require('./package.json'),
 -------------------------------------------------------------------- */
 
 gulp.task('sass:dev', function(){
-	return gulp.src('.httpdocs/sass/**/*.scss')
-		.pipe($.newer('.httpdocs/css'))
+	return gulp.src(projectRoot + '/sass/**/*.scss')
+		.pipe($.newer(projectRoot + '/css'))
 		.pipe($.sourcemaps.init())
 		.pipe($.sass({
 			style: 'extended',
@@ -58,18 +59,18 @@ gulp.task('sass:dev', function(){
 			errLogToConsole: true
 		}))
 		.pipe($.sourcemaps.write('./'))
-		.pipe(gulp.dest('.httpdocs/css'));
+		.pipe(gulp.dest(projectRoot + '/css'));
 });
 
 gulp.task('sass:dist', function(){
-	return gulp.src('.httpdocs/sass/**/*.scss')
-		.pipe($.newer('.httpdocs/css'))
+	return gulp.src(projectRoot + '/sass/**/*.scss')
+		.pipe($.newer(projectRoot + '/css'))
 		.pipe($.sass({
 			style: 'extended',
 			sourcemap: false,
 			errLogToConsole: true
 		}))
-		.pipe(gulp.dest('.httpdocs/css'));
+		.pipe(gulp.dest(projectRoot + '/css'));
 });
 
 /* Concatenate and minify Css files
@@ -77,7 +78,7 @@ gulp.task('sass:dist', function(){
 
 gulp.task('cssmin', function(){
 	return gulp.src([
-			'.httpdocs/css/style.css'
+			projectRoot + '/css/style.css'
 		])
 		.pipe($.concat('style.min.css'))
 		.pipe($.minifyCss({
@@ -87,36 +88,36 @@ gulp.task('cssmin', function(){
 		.pipe($.header(meta.banner, {
 			pkg : pkg,
 		 } ))
-		.pipe(gulp.dest('.httpdocs/css'));
+		.pipe(gulp.dest(projectRoot + '/css'));
 });
 
 /* Optimize JPG, PNG and GIF's
 -------------------------------------------------------------------- */
 
 gulp.task('imagemin', function(){
-	return gulp.src('.httpdocs/img/**/*.{png,jpg,gif}')
+	return gulp.src(projectRoot + '/img/**/*.{png,jpg,gif}')
 		.pipe($.imagemin({
 			optimazationLevel: 5,
 			progressive: false,
 			interlaced: true
 		}))
-		.pipe(gulp.dest('.httpdocs/img'));
+		.pipe(gulp.dest(projectRoot + '/img'));
 });
 
 /* Optimize SVG's
 -------------------------------------------------------------------- */
 
 gulp.task('svgmin', function(){
-	return gulp.src('.httpdocs/img/**/*.svg')
+	return gulp.src(projectRoot + '/img/**/*.svg')
 		.pipe($.svgmin())
-		.pipe(gulp.dest('.httpdocs/img'));
+		.pipe(gulp.dest(projectRoot + '/img'));
 });
 
 /* Jshint lint Javascript files
 -------------------------------------------------------------------- */
 
 gulp.task('jshint', function(){
-	return gulp.src('.httpdocs/js/*.js')
+	return gulp.src(projectRoot + '/js/*.js')
 		.pipe($.jshint())
 		.pipe($.jshint.reporter('default'));
 });
@@ -126,9 +127,9 @@ gulp.task('jshint', function(){
 
 gulp.task('uglify', function(){
 	return gulp.src([
-			'.httpdocs/js/libs/jquery-2.1.0.js',
-			'.httpdocs/js/libs/modernizr-2.7.1.js',
-			'.httpdocs/js/common.js'
+			projectRoot + '/js/libs/jquery-2.1.0.js',
+			projectRoot + '/js/libs/modernizr-2.7.1.js',
+			projectRoot + '/js/common.js'
 		])
 		.pipe($.concat('common.js', {
 			newLine: ';'
@@ -137,7 +138,7 @@ gulp.task('uglify', function(){
 		.pipe($.header(meta.banner, {
 			pkg : pkg,
 		 } ))
-		.pipe(gulp.dest('.httpdocs/js/min'));
+		.pipe(gulp.dest(projectRoot + '/js/min'));
 });
 
 /* Run a proxy server
@@ -147,7 +148,7 @@ gulp.task('browser-sync', function() {
 	browserSync({
 		// proxy: { 'gulp-test.local.cassius.nl' }
 		server: {
-			baseDir: './'
+			baseDir: projectRoot
 		}
 	});
 });
@@ -157,8 +158,8 @@ gulp.task('browser-sync', function() {
 
 gulp.task('clean', function(){
 	gulp.src([
-		'.httpdocs/css/**/*.map',
-		'.httpdocs/js/**/*.map',
+		projectRoot + '/css/**/*.map',
+		projectRoot + '/js/**/*.map',
 		],{read: false})
 		.pipe($.clean());
 });
@@ -169,8 +170,9 @@ gulp.task('clean', function(){
 
 // Server (proxy) and file `watcher` livereload for local development
 gulp.task('serve', ['browser-sync'], function(){
-	gulp.watch('.httpdocs/sass/**/*.scss', ['sass:dev', reload]);
-	// gulp.watch("./*.html").on('change', reload);
+	gulp.watch(projectRoot + '/*.html', [reload]);
+	gulp.watch(projectRoot + '/css/*.css', [reload]);
+	gulp.watch(projectRoot + '/sass/**/*.scss', ['sass:dev', reload]);
 });
 
 // Aliasses, sub-tasks

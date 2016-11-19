@@ -1,7 +1,7 @@
 {
-  "name": "gulp-test",
-  "author": "Dennis Burger <dennis@dutchwebworks.nl>",
-  "version": "0.1.0",
+  "name": "<%= appname %>",
+  "author": "<%= appauthor %> <<%= youremail %>>",
+  "version": "<%= appversion %>",
   "main": "Gulpfile.js",
   "devDependencies": {
     "browser-sync": "^2.2.1",

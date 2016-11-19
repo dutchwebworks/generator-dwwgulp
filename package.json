@@ -25,9 +25,6 @@
   ],
   "author": "Dennis Burger",
   "license": "MIT",
-  "peerDependencies": {
-      "yo": ">=1.7.1"
-  },
   "dependencies": {
     "chalk": "^1.1.1",
     "mkdirp": "^0.5.1",
