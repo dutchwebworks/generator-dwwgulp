@@ -109,4 +109,7 @@ module.exports = generators.Base.extend({
 		this.bowerInstall();
 		this.npmInstall();
 	},
+	end: function() {
+		this.spawnCommand('gulp', ['serve']);
+	}
 });
