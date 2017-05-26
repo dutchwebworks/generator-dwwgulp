@@ -1,6 +1,6 @@
 # Dutchwebworks Gulp Boilerplate
 
-*By Dennis Burger, may 2016*
+*By Dennis Burger, may 2017*
 
 
 ### Github issue tracking
