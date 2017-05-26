@@ -1,6 +1,6 @@
 # Dutchwebworks Yeoman Gulp generator
 
-*By Dennis Burger, may 2016*
+*By Dennis Burger, may 2017*
 
 A [Yeoman](http://yeoman.io) generator for creating a basic web site setup with [Gulp](http://gulpjs.com). Yeoman consist of 3 tools: **Yo, Gulp and Bower**.
 
